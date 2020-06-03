@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let date = new Date('2019', '2', '0')
+        console.log(date);
+
+        function getDate(year = 0, month) {
+            let date = new Date('2019', month, '0');
+            return date.getDate()
+        }
+    </script>
+</body>
+
+</html>

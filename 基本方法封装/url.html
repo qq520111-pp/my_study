@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>url 处理</title>
+</head>
+
+<body>
+    <script>
+        let url = "https://3.ljzswz.com/web/index.php?store_id=1&r=api/user/index&lainum=1001&access_token=h-6YgSkcf1zDD1OXPhG0Qvjaf1Q0CYC4&_version=2.8.9&_platform=wx";
+
+        /*
+         *url地址
+         *key键(有就替换没有就添加)
+         *value值
+        */
+
+        function urlHandle(url, key, value) {
+            let str = url.split("?");//取到?后面的值
+            let resultS = ""
+            if (str[1].includes("#")) {
+                str = str[1].split("#")[0];//去除哈希值
+            }
+
+            let result = str[1].split("&");
+
+            if (result.some(item => {
+                return item.includes(key)
+            })) {
+                // 有
+                result.forEach((item, index) => {
+                    if (item.includes(key)) {
+                        let handleArr = item.split("=");
+                        handleArr[1] = value;
+                        resultS = handleArr.join("=");
+                        result[index] = resultS;
+                    }
+                });
+            } else {
+                // 没有
+                result.push(key + "=" + value)
+            }
+
+            return str[0] + "?" + result.join("&");
+        }
+
+
+        console.log(urlHandle(url, "哈哈哈", 111));
+
+
+    </script>
+</body>
+
+</html>

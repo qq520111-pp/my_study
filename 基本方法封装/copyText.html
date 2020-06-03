@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div cols="20" id="biao1">12345678</div>
+    <input type="button" onClick="copyUrl2()" value="点击复制代码" />
+
+    <script type="text/javascript">
+        function copyUrl2(value) {
+            var oInput = document.createElement('input');
+            oInput.value = value;
+            document.body.appendChild(oInput);
+            oInput.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            oInput.className = 'oInput';
+            oInput.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

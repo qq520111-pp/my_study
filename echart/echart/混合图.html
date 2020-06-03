@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="ech" style="height:400px;"> </div>
+    <script>
+        let ech = document.getElementById('ech');
+        let my_echart = echarts.init(ech);
+        let option = {
+            title: {
+                text: '线性'
+            },
+            legend: { // 必须和 series对应
+                data: ["哈哈哈", "嘻嘻嘻", '叮叮当']
+            },
+            xAxis: {
+                type: 'category',
+                data: ["1~1", "1~2", "1~3", "1~4"]
+            },
+            grid: { left: '8%', right: '8%', bottom: '10%' },
+            yAxis: [{
+                name: "基本数值",
+                type: 'value',
+                axisTick: {
+                    show: false
+                },
+                // max:50,
+                axisLine: { lineStyle: { color: '#000' } },
+                axisLabel: { margin: 10, textStyle: { fontSize: 12 }, textStyle: { color: '#000' } },
+                splitLine: { lineStyle: { color: '#ddd' } }
+            }, {
+                name: "对比差值",
+                nameLocation: "start",
+                axisTick: {
+                    show: false
+                },
+                axisLine: { lineStyle: { color: '#000' } },
+                axisLabel: { margin: 10, textStyle: { fontSize: 12 }, textStyle: { color: '#000' } },
+                splitLine: { lineStyle: { color: '#000' } }
+            }],
+            tooltip: {
+                trigger: 'axis', // item 配合饼图的  axis 配合线图  展示中间线
+                formatter: '{a} <br/>{b} : {c} '
+            },
+            series: [{
+                name: '哈哈哈',
+                type: 'line',
+                data: [4, 5, 3, 8]
+            }, {
+                name: '嘻嘻嘻',
+                type: 'bar',
+                data: [4, 5, 3, 8]
+            }, {
+                name: '叮叮当',
+                type: 'line',
+                yAxisIndex: 1, //y轴的双y轴属性
+                data: [41, 25, 33, 18]
+            }]
+        };
+
+        my_echart.setOption(option);
+        let num = 4
+        setInterval(function () {
+            option.xAxis.data.push("1~" + num++);
+            option.xAxis.data.shift();
+            option.series[0].data.push(Math.random() * 100);
+            option.series[1].data.push(Math.random() * 100);
+            option.series[2].data.push(Math.random() * 100);
+            option.series[0].data.shift();
+            option.series[1].data.shift();
+            option.series[2].data.shift();
+            my_echart.setOption(option);
+        }, 4000)
+    </script>
+</body>
+
+</html>

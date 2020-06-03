@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{d}}{{d}} 
+            {{w}}</div>
+        <input type="text" v-model="w">
+        123212{{w}}
+        {{de}}
+    </div>
+    <script src="./Observer.js"></script>
+    <script src="./Dep.js"></script>
+    <script src="./Watcher.js"></script>
+    <script src="./Complit.js"></script>
+    <script src="./Mvvm.js"></script>
+    <script>
+        let vm = new Mvvm({
+            el: "#app",
+            data: {
+                d: "我的v-mode",
+                de: 4,
+                w: 2554135,
+            }
+        })
+    </script>
+</body>
+
+</html>

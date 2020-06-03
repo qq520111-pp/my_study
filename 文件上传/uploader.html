@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="https://www.baidu.com/" id="uploadForm" enctype="multipart/form-data">
+        <input id="file" type="file" name="mmm" onchange="sss()" />
+        <input type="submit" name="submit" id="submit" value="upload" />
+    </form>
+    <img src="" alt="">
+
+    <!-- <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe> -->
+    <script>
+        var uploadForm = document.getElementById("uploadForm");
+        var file = document.getElementById("file");
+        var img = document.getElementsByTagName("img")[0];
+        var s = new FormData(uploadForm);
+        // var fileReader = new FileReader();
+
+
+        function sss() {
+            // console.log(fileReader.readAsDataURL(file.files[0]));
+            s.append("my_data",file.files[0])
+            console.log(s.keys().next());
+            
+            // fileReader.onload = function (result) {
+            //     console.log(result);
+                
+            //     console.log(result.target.result);
+            //     img.src = result.target.result;
+            // }
+        }
+
+
+        uploadForm.onsubmit = function () {
+            console.log(s)
+
+            console.dir()
+
+            console.dir(uploadForm)
+            return false
+        }
+    </script>
+
+</body>
+
+</html>
